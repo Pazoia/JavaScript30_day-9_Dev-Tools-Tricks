@@ -5,6 +5,132 @@
     <title>Console Tricks!</title>
 </head>
 <body>
+    <style>
+        .intro {
+            font-size: 20px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .point {
+            color: tomato;
+        }
+
+        .description {
+            color: black;
+            font-weight: lighter;
+        }
+    </style>
+
+    <h1 class="intro">
+        In this lesson I covered some commands to be applied to the console. <br>
+        Commands such as: <br>
+        <ul>
+            <li class="point">console.log('hello'); <br>
+                <p class="description">
+                    this is the mostly used command,
+                    i'll print whatever is inside the parentheses.
+                </p>
+            </li>
+            <li class="point">console.log('Hello, I am a %s string', '💩'); <br>
+                <p class="description">
+                    using interpolation the %s will be replaced by whatever
+                    is inside the quote marks after the comma, this can be used to add a variable for example.
+                </p>
+            </li>
+            <li class="point">console.log('%c I am some cool text!', 'font-size:25px; color:red;'); <br>
+                <p class="description">
+                    adding %c at the beggining of the text inside the parentheses,
+                    followed by styling requirements after the comma, the text printed in the console
+                    will be formatted to the styling instructions.
+                </p>
+            </li>
+            <li class="point">console.warn('OH NOOOO'); <br>
+                <p class="description">
+                    .warn(); will return a warning message on the console,
+                    the message will be the text inside the parentheses.
+                </p>
+            </li>
+            <li class="point">console.error('Broken!!!'); <br>
+                <p class="description">
+                    .error(); will return an error message on the console,
+                    the message will be the text inside the parentheses.
+                </p>
+            </li>
+            <li class="point">console.info('Crocodiles eat 3-4 people per year'); <br>
+                <p class="description">
+                    .info(); will return a message on the console with the 'i' symbol next to it,
+                    the message will be the text inside the parentheses.
+                </p>
+            </li>
+            <li class="point">console.assert(1 === 2, 'This is wrong!'); <br>
+                <p class="description">
+                    .assert(); will return an error message if the assertion is false,
+                    the message being displayed is written after the comma.
+                </p>
+            </li>
+            <li class="point">console.clear(); <br>
+                <p class="description">
+                    .clear(); will clear the console.
+                </p>
+            </li>
+            <li class="point">console .log(p); <br>
+                <p class="description">
+                    you can use .log(p); to print the element inside the parentheses in the console.
+                </p>
+            </li>
+            <li class="point">console.dir(p); <br>
+                <p class="description">
+                    .dir(p); will display on the console all the properties of the element inside the parentheses.
+                </p>
+            </li>
+            <li class="point">
+                console.group(`${dog.name}`); <br>
+                console.log(`This is ${dog.name}`); <br>
+                console.log(`${dog.name} is ${dog.age} years old`); <br>
+                console.log(`${dog.name} is ${dog.age * 7} dog years`); <br>
+                console.groupEnd(`${dog.name}`); <br>
+                <p class="description">
+                    the text betwen .group(); and .groupEnd(); will all be inside a harrow header on the console, in this case the
+                    header will be the dog's name. <br>
+                    To make it neater and with less info opened use .groupCollapsed(); instead of .group(); this will collapse the info in the 
+                    arrows.
+                </p>
+            </li>
+            <li class="point">
+                console.count('Paulo'); <br>
+                console.count('Helen'); <br>
+                console.count('Paulo'); <br>
+                console.count('Helen'); <br>   
+                <p class="description">
+                    .count(); will count real life how many times something has been repeated, in this case it'll
+                    print in the console the following: <br>
+                    Paulo: 1 <br>
+                    Helen: 1 <br>
+                    Paulo: 2 <br>
+                    Helen: 2 <br>
+                </p>
+            </li>
+            <li class="point">
+                console.time('fetching data'); <br>
+                fetch('https://api.github.com/users/wesbos') <br>
+                    .then(data => data.json()) <br>
+                    .then(data => { <br>
+                        console.timeEnd('fetching data'); <br>
+                        console.log(data); <br>
+                    });
+        
+                <p class="description">
+                    using .time(); will print the time taken to perform a task, in the example above it'll print the
+                    time it took to fetch wes bos user data from github.
+                </p>
+            </li>
+            <li class="point">console.table(dogs); <br>
+                <p class="description">
+                    .table(); will organize the data from an array into a table in the console.
+                </p>
+            </li>
+        </ul>
+    </h1>
 
     <p onclick="makeGreen()">xBREAKxDOWNx</p>
 
@@ -21,30 +147,73 @@
         }
 
         // Regular
+        console.log('Hello');
 
         // Interpolated
+        console.log('Hello, I am a %s string', '💩');
 
         // Styled
+        console.log('%c I am some cool text!', 'font-size:25px; color:red;');
 
         // Warning!
-
+        console.warn('OH NOOOO');
+        
         // Error :|
-
+        console.error('Broken!!!');
+        
         // Info
+        console.info('Crocodiles eat 3-4 people per year');
 
         // Testing
+        console.assert(1 === 2, 'This is wrong!');
+
+        const p = document.querySelector('p');
+        console.assert(p.classList.contains('ouch'), 'This is wrong!');
 
         // Clearing
+        console.clear();
 
         // Viewing DOM Elements
+        console.log(p);
+        console.dir(p);
 
         // Grouping together
+        dogs.forEach(dog => {
+            console.groupCollapsed(`${dog.name}`);
+            console.log(`This is ${dog.name}`);
+            console.log(`${dog.name} is ${dog.age} years old`);
+            console.log(`${dog.name} is ${dog.age * 7} dog years`);
+            console.groupEnd(`${dog.name}`);
+        });
 
         // Counting
+        console.count('Paulo');
+        console.count('Helen');
+        console.count('Paulo');
+        console.count('Helen');
+        console.count('Paulo');
+        console.count('Helen');
+        console.count('Paulo');
+        console.count('Helen');
+        console.count('Paulo');
+        console.count('Helen');
+        console.count('Paulo');
+        console.count('Helen');
+        console.count('Paulo');
+        console.count('Helen');
 
         // Timing
+        console.time('fetching data');
+        fetch('https://api.github.com/users/wesbos')
+            .then(data => data.json())
+            .then(data => {
+                console.timeEnd('fetching data');
+                console.log(data);
+            });
 
-        
+        // Display data in a table
+        console.table(dogs);
+
     </script>
     
 </body>
